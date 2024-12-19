@@ -1,0 +1,29 @@
+.section-benh-thuong-gap {
+  .img-tvv {
+    float: left;
+    margin-right: 5px;
+    width: 30%;
+    margin-top: -40px;
+  }
+  .tu-van-vien {
+    border: 1px solid #339f3c;
+    width: 96%;
+    margin: 15% auto;
+    display: block;
+    border-radius: 20px;
+    padding-left: 10px;
+    height: auto;
+    p {
+      color: #2b812c;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+    a {
+      margin-top: 0px;
+      margin-bottom: 10px;
+      color: #2B812C;
+      font-size: 22px;
+      font-weight: 600;
+    }
+  }
+}

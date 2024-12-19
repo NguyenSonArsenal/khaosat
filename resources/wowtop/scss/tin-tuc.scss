@@ -1,0 +1,138 @@
+.news-readmore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --gap: 29px;
+  --bg-line: #ebebeb;
+}
+
+.news-readmore:before {
+  content: '';
+  height: 1px;
+  background-color: var(--bg-line);
+  flex: 1;
+  margin-right: 15px;
+}
+.news-readmore:after {
+  content: '';
+  height: 1px;
+  background-color: #ebebeb;
+  flex: 1;
+  margin-left: 15px;
+}
+.news-readmore a {
+  color: white;
+  padding: 4px 8px;
+  font-size: 14px;
+  border-radius: 999px;
+  background: #2C5D6C;
+}
+
+#page_new {
+  h1 {
+    font-size: 32px !important;
+    font-weight: bold;
+    line-height: 1.25;
+    color: #2C5D6C;
+  }
+  h2 {
+    line-height: 1.25;
+    font-size: 26px !important;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 35px;
+    color: #2C5D6C;
+  }
+  h3 {
+    font-size: 22px !important;
+    font-weight: bold;
+    line-height: 1.25;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #2C5D6C;
+  }
+
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 40px !important;
+      font-weight: bold;
+      line-height: 56px;
+    }
+    h2 {
+      line-height: 30px;
+      font-size: 28px !important;
+      font-weight: 600;
+      margin-bottom: 10px;
+      margin-top: 35px;
+      color: #2C5D6C;
+    }
+    h3 {
+      font-size: 22px !important;
+      font-weight: bold;
+      line-height: 40px;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+  }
+  .x {
+    box-shadow: 0 2px 10px rgba(117, 117, 117, .3);
+    padding: 15px;
+    text-align: justify;
+    @media (min-width: 768px) {
+      padding: 30px 80px;
+    }
+    @media (min-width: 1200px) {
+      padding: 40px 177px 30px;
+    }
+  }
+  a {
+    color: #2C5D6C;
+    font-weight: 500;
+  }
+  ul {
+    list-style-type: disc;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  ol, ul {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+  }
+}
+
+.content_info p, .content_info .leading-5 a {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-align: justify;
+}
+
+#content1 {
+  font-size: 18px !important;
+  ul {
+    list-style: unset;
+  }
+  p {
+    margin-bottom: 10px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hideX {
+    display: none;
+  }
+}

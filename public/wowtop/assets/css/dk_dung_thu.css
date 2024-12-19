@@ -1,0 +1,866 @@
+.t1 {
+  background: linear-gradient(to right, #895500, #F0C964, #A16f16, #925E08, #EABD54);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: 700;
+}
+
+.section_tim_hieu_sp .r1 {
+  margin-bottom: 50px;
+}
+.section_tim_hieu_sp .r1 .head {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.section_tim_hieu_sp .r1 .head .txt {
+  color: #84571B;
+}
+.section_tim_hieu_sp .r1 .head img {
+  text-align: center;
+  margin: 0 auto;
+  width: 40%;
+}
+.section_tim_hieu_sp .r1 .bottom p {
+  font-weight: 600;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 80px;
+  position: relative;
+}
+.section_tim_hieu_sp .r1 .bottom p span {
+  position: absolute;
+  top: 18%;
+  left: 90px;
+  background: linear-gradient(to right, #895500, #F0C964, #A16f16, #925E08, #EABD54);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+@media (min-width: 576px) {
+  .section_tim_hieu_sp .r1 .bottom p {
+    height: 120px;
+  }
+  .section_tim_hieu_sp .r1 .bottom p span {
+    left: 140px;
+    top: 33px;
+  }
+}
+@media (min-width: 768px) {
+  .section_tim_hieu_sp .r1 .bottom p {
+    height: 100px;
+  }
+  .section_tim_hieu_sp .r1 .bottom p span {
+    left: 93px;
+    top: 25px;
+  }
+}
+@media (min-width: 992px) {
+  .section_tim_hieu_sp .r1 .bottom p {
+    height: 110px;
+  }
+  .section_tim_hieu_sp .r1 .bottom p span {
+    left: 120px;
+    top: 25px;
+  }
+}
+.section_tim_hieu_sp .r1 .bottom .rr1 p {
+  background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/asset_6.png");
+}
+@media (max-width: 767px) {
+  .section_tim_hieu_sp .r1 .bottom .rr2 {
+    margin-top: 15px;
+  }
+}
+.section_tim_hieu_sp .r1 .bottom .rr2 p {
+  background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/asset_7.png");
+}
+.section_tim_hieu_sp .r2 .main {
+  background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/co-duong-ke.png");
+  font-weight: 600;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 8px;
+}
+@media (max-width: 576px) {
+  .section_tim_hieu_sp .r2 .main {
+    background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/k-co-duong-ke.png");
+  }
+}
+.section_tim_hieu_sp .r2 .main .item {
+  padding: 0;
+}
+.section_tim_hieu_sp .r2 .main .item .number {
+  color: white;
+  border-radius: 50%;
+  padding: 6px 12px;
+  background: #84571B;
+  position: relative;
+  top: 40px;
+  left: 10px;
+}
+.section_tim_hieu_sp .r2 .main .item img {
+  margin: 0 auto;
+  text-align: center;
+  height: 90px;
+  margin-top: 60px;
+}
+@media (max-width: 576px) {
+  .section_tim_hieu_sp .r2 .main .item img {
+    height: 68px;
+  }
+}
+.section_tim_hieu_sp .r2 .main .item .t {
+  color: #84571B;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  font-size: 14px;
+  padding: 0 15px;
+}
+@media (max-width: 576px) {
+  .section_tim_hieu_sp .r2 .main .item .t {
+    padding: 0px 6px;
+    text-align: justify;
+  }
+}
+@media (min-width: 577px) {
+  .section_tim_hieu_sp .r2 .main {
+    padding: 30px;
+  }
+  .section_tim_hieu_sp .r2 .main .item .number {
+    top: 15px;
+  }
+  .section_tim_hieu_sp .r2 .main .item img {
+    margin-top: 30px;
+  }
+}
+
+.dungchung .txt {
+  background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/asset_2.png");
+  font-weight: 600;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 80px;
+  position: relative;
+}
+.dungchung .txt > span {
+  background: linear-gradient(to right, #895500, #F0C964, #A16f16, #925E08, #EABD54);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+  top: 28px;
+  position: absolute;
+  left: 60px;
+}
+@media (min-width: 576px) {
+  .dungchung .txt {
+    height: 100px;
+  }
+  .dungchung .txt > span {
+    top: 38px;
+    left: 120px;
+  }
+}
+@media (min-width: 992px) {
+  .dungchung .txt {
+    height: 110px;
+  }
+  .dungchung .txt > span {
+    top: 40px;
+    left: 320px;
+  }
+}
+
+.dungchung {
+  background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/asset_2.png");
+  font-weight: 600;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 80px;
+  position: relative;
+}
+.dungchung > span {
+  background: linear-gradient(to right, #895500, #F0C964, #A16f16, #925E08, #EABD54);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+  top: 28px;
+  position: absolute;
+  left: 60px;
+}
+@media (min-width: 576px) {
+  .dungchung {
+    height: 100px;
+  }
+  .dungchung > span {
+    top: 38px;
+    left: 120px;
+  }
+}
+@media (min-width: 992px) {
+  .dungchung {
+    height: 110px;
+  }
+  .dungchung > span {
+    top: 40px;
+    left: 200px;
+  }
+}
+
+.sectionb456 {
+  margin-top: 50px;
+}
+.sectionb456 .buoc {
+  text-transform: uppercase;
+  background: linear-gradient(to right, #E9B423, #C18B1B, #D4A01E, #E4B723);
+  display: inline-block;
+  padding: 6px 12px 4px 12px;
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+}
+.sectionb456 .dkdt {
+  color: #84571B !important;
+  background: linear-gradient(to right, #BD9840, #FEF0AD, #EABD54, #EABD54);
+  border-radius: 50px;
+  padding: 12px;
+  text-align: center;
+  margin: 0 auto;
+  width: 500px;
+  font-weight: 700;
+  border: 2px solid #FEF0AD;
+}
+@media (max-width: 500px) {
+  .sectionb456 .dkdt {
+    width: 100%;
+  }
+}
+.sectionb456 .r2 .mainr2 {
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.1), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  height: 400px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+.sectionb456 .r2 .mainr2 .cauhoi_item {
+  margin-bottom: 15px;
+}
+.sectionb456 .r2 .mainr2 .cauhoi_item .cauhoi {
+  color: #84571B;
+  font-weight: 700;
+}
+.sectionb456 .r2 .mainr2 .cauhoi_item .traloi {
+  border-radius: 20px;
+  color: #84571B;
+  background: #F0DCAF;
+  font-style: italic;
+  padding: 4px 12px;
+}
+.sectionb456 .r3 .head .buoc {
+  width: auto;
+  text-align: center;
+  display: table;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.sectionb456 .r3 .head .t1 {
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .sectionb456 .r3 .head .t1 {
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+.sectionb456 .r3 .dk_mua_hang .title {
+  color: #84581b;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .sectionb456 .r3 .dk_mua_hang .content {
+    padding: 20px 12px;
+  }
+}
+.sectionb456 .r3 .dk_mua_hang form .row_input {
+  margin-bottom: 15px;
+}
+.sectionb456 .r3 .dk_mua_hang form .row_input input {
+  border-radius: 30px;
+  height: 42px;
+  font-size: 14px;
+}
+.sectionb456 .r4 .join_group {
+  color: #84571B;
+  font-style: italic;
+  font-weight: 600;
+  top: 42%;
+  left: 35%;
+  position: absolute;
+}
+.sectionb456 .r5 {
+  margin-top: 30px;
+}
+.sectionb456 .r6 {
+  text-align: center;
+  margin-top: 30px;
+}
+.sectionb456 .r7 {
+  margin-top: 30px;
+}
+.sectionb456 .r7 img {
+  height: 250px;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .sectionb456 .r7 img {
+    height: 400px;
+  }
+}
+.sectionb456 .r7 p {
+  margin-top: 15px;
+  color: #84571B;
+  font-weight: 500;
+  padding: 0 15px;
+  text-align: center;
+}
+.sectionb456 .r7 .right {
+  margin-top: 15px;
+}
+@media (min-width: 576px) {
+  .sectionb456 .r7 .right {
+    margin-top: 0;
+  }
+}
+
+.section_dieu_khoan {
+  padding-bottom: 50px;
+  margin-top: 35px;
+}
+@media (min-width: 768px) {
+  .section_dieu_khoan .wrapper992 {
+    padding: 0 100px;
+  }
+}
+.section_dieu_khoan .dk {
+  background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/asset_2.png");
+  font-weight: 600;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 80px;
+  position: relative;
+}
+.section_dieu_khoan .dk .t1 {
+  position: absolute;
+  top: 34px;
+  left: 50px;
+}
+@media (max-width: 576px) {
+  .section_dieu_khoan .dk .t1 {
+    font-size: 14px;
+  }
+}
+@media (min-width: 768px) {
+  .section_dieu_khoan .dk {
+    height: 100px;
+  }
+  .section_dieu_khoan .dk .t1 {
+    top: 42px;
+    left: 70px;
+  }
+}
+@media (min-width: 992px) {
+  .section_dieu_khoan .dk .t1 {
+    left: 165px;
+  }
+}
+.section_dieu_khoan .main {
+  margin-top: 20px;
+  color: #84571B;
+  font-weight: 500;
+}
+.section_dieu_khoan .main > div {
+  margin-bottom: 10px;
+}
+
+.section-main {
+  padding-top: 0;
+}
+
+@media (min-width: 1200px) {
+  .section-main {
+    padding-top: 150px;
+  }
+}
+.section-banner-slider {
+  position: relative;
+  top: -10px;
+}
+.section-banner-slider .slide-arrows img {
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  margin: 0 auto;
+  cursor: pointer;
+  background: linear-gradient(to bottom, #895500, #F0C964, #925E08, #EABD54);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  border: none;
+  height: 24px;
+  font-weight: 600;
+}
+.section-banner-slider .slide-arrows img:hover {
+  opacity: 0.75;
+}
+@media (min-width: 768px) {
+  .section-banner-slider .slide-arrows img {
+    height: 30px;
+  }
+}
+@media (min-width: 992px) {
+  .section-banner-slider .slide-arrows img {
+    height: 40px;
+  }
+}
+@media (min-width: 1200px) {
+  .section-banner-slider .slide-arrows img {
+    top: 50%;
+  }
+}
+.section-banner-slider .slide-arrows img:first-of-type {
+  left: 10px;
+}
+@media (min-width: 768px) {
+  .section-banner-slider .slide-arrows img:first-of-type {
+    left: 15px;
+  }
+}
+.section-banner-slider .slide-arrows img:last-of-type {
+  right: 10px;
+}
+@media (min-width: 768px) {
+  .section-banner-slider .slide-arrows img:last-of-type {
+    right: 15px;
+  }
+}
+.section-banner-slider .slick-dots {
+  display: flex;
+  gap: 0px;
+  justify-content: center;
+  position: relative;
+  top: -40px;
+}
+@media (max-width: 576px) {
+  .section-banner-slider .slick-dots {
+    top: -20px;
+  }
+}
+.section-banner-slider .slick-dots li.slick-active button:before {
+  opacity: 0.75;
+  color: #000;
+}
+.section-banner-slider .slick-dots li.slick-active {
+  background: #e9c15d;
+  border: 1px solid #FEF0AD;
+  padding: 6px;
+}
+@media (max-width: 576px) {
+  .section-banner-slider .slick-dots li.slick-active {
+    padding: 3px;
+  }
+}
+.section-banner-slider .slick-dots li {
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+  list-style: none;
+  border: 1px solid #EABD54;
+  border-radius: 50%;
+  background: white;
+}
+@media (max-width: 576px) {
+  .section-banner-slider .slick-dots li {
+    width: 6px;
+    height: 6px;
+  }
+}
+.section-banner-slider .slick-dots li button {
+  color: transparent;
+}
+.section-banner-slider .section-main-slider .slide_item {
+  background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/bg12.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 450px;
+}
+.section-banner-slider .section-main-slider .slide_item .slide_left {
+  margin-top: 60px;
+  padding-left: 110px;
+}
+.section-banner-slider .section-main-slider .slide_item .slide_left .h2 {
+  line-height: 1.4;
+  background: linear-gradient(to right, #895500, #F0C964, #A16f16, #925E08, #EABD54);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: 700;
+}
+.section-banner-slider .section-main-slider .slide_item .slide_left .concaolon {
+  text-transform: uppercase;
+  background: linear-gradient(to right, #E9B423, #C18B1B, #D4A01E, #E4B723);
+  display: inline-block;
+  padding: 6px 12px 4px 12px;
+  color: white;
+  border-radius: 12px;
+}
+@media (max-width: 435px) {
+  .section-banner-slider .section-main-slider .slide_item .slide_left .concaolon {
+    font-size: 14px !important;
+  }
+}
+@media (min-width: 1400px) {
+  .section-banner-slider .section-main-slider .slide_item {
+    height: 550px;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left {
+    margin-top: 130px;
+    padding-left: 12%;
+  }
+}
+@media (min-width: 1600px) {
+  .section-banner-slider .section-main-slider .slide_item {
+    height: 620px;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left {
+    margin-top: 140px;
+    padding-left: 15%;
+  }
+}
+@media (min-width: 1800px) {
+  .section-banner-slider .section-main-slider .slide_item .slide_left {
+    padding-left: 20%;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left .h2 {
+    line-height: 1.45;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left .xacnhan {
+    font-size: 20px;
+    margin-top: 30px;
+  }
+}
+@media (max-width: 1200px) {
+  .section-banner-slider .section-main-slider .slide_item {
+    height: 450px;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left {
+    margin-top: 60px;
+    padding-left: 100px;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left .xacnhan {
+    font-size: 20px;
+    width: 230px !important;
+    padding: 2px 0px;
+  }
+}
+@media (max-width: 992px) {
+  .section-banner-slider .section-main-slider .slide_item {
+    height: 320px;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left {
+    margin-top: 60px;
+    padding-left: 85px;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left .xacnhan {
+    font-size: 16px;
+    width: 180px !important;
+    padding: 2px 0px;
+  }
+}
+@media (max-width: 768px) {
+  .section-banner-slider .section-main-slider .slide_item {
+    height: 280px;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left {
+    margin-top: 30px;
+    padding-left: 70px;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left .xacnhan {
+    font-size: 16px;
+  }
+}
+@media (max-width: 576px) {
+  .section-banner-slider .section-main-slider .slide_item {
+    height: 180px;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left {
+    margin-top: 20px;
+    padding-left: 34px;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left .h2 {
+    font-size: 15px;
+  }
+  .section-banner-slider .section-main-slider .slide_item .slide_left .xacnhan {
+    font-size: 14px;
+    width: 150px !important;
+    padding: 2px 0px;
+  }
+}
+.section-banner-slider .section-main-slider .xacnhan {
+  margin: 0;
+  margin-top: 20px;
+  cursor: pointer;
+  width: 200px;
+  padding: 4px;
+}
+@media (max-width: 768px) {
+  .section-banner-slider .section-main-slider .xacnhan {
+    margin-top: 0px;
+  }
+}
+.section-banner-slider .section-main-slider .xacnhan a {
+  color: white;
+  font-style: normal;
+}
+
+.section_quatang .head {
+  text-align: center;
+}
+.section_quatang .head .h1 {
+  line-height: 1.4;
+  background: linear-gradient(to right, #6E490A, #C7831B, #C5821A, #6E490A);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+@media (max-width: 435px) {
+  .section_quatang .head .h1 {
+    font-size: 20px;
+  }
+}
+.section_quatang .head .h2 {
+  line-height: 1.4;
+  background: linear-gradient(to right, #6E490A, #C7831B, #C5821A, #6E490A);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.section_quatang .head .h3 {
+  background: linear-gradient(to right, #895500, #F0C964, #A16f16, #925E08, #EABD54);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  line-height: 1.3;
+  text-align: center;
+}
+.section_quatang .head .t {
+  background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/asset_15.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 70px;
+  line-height: 50px;
+}
+.section_quatang .head .t span:first-of-type {
+  color: #84571B;
+  font-size: 18px;
+  position: relative;
+  top: -10px;
+  margin-right: 15px;
+}
+.section_quatang .head .t span:last-of-type {
+  line-height: 1.4;
+  background: linear-gradient(to right, #6E490A, #C7831B, #C5821A, #6E490A);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: 700;
+}
+.section_quatang .head .t2 {
+  color: #84571B;
+  text-align: justify;
+  margin-top: 15px;
+}
+@media (max-width: 576px) {
+  .section_quatang .head .t {
+    height: 50px;
+  }
+  .section_quatang .head .t span:first-of-type {
+    top: 0px;
+  }
+}
+.section_quatang .tonggiatri {
+  line-height: 1.4;
+  background: linear-gradient(to right, #6E490A, #C7831B, #C5821A, #6E490A);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: 700;
+  margin-bottom: 0;
+  text-align: center;
+}
+.section_quatang .dkdt {
+  color: #84571B !important;
+  background: linear-gradient(to right, #BD9840, #FEF0AD, #EABD54, #EABD54);
+  border-radius: 50px;
+  padding: 12px;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  font-weight: 700;
+  border: 2px solid #FEF0AD;
+}
+@media (min-width: 576px) {
+  .section_quatang .dkdt {
+    width: 500px;
+  }
+}
+.section_quatang .main {
+  margin: 30px 0;
+}
+.section_quatang .main .connguoi {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.section_quatang .main .box_item:last-of-type {
+  margin-top: 15px;
+  position: relative;
+}
+.section_quatang .main .box_item:last-of-type img.ab {
+  position: absolute;
+  right: -35px;
+  bottom: -50px;
+}
+@media (max-width: 1200px) {
+  .section_quatang .main .box_item:last-of-type img.ab {
+    right: 0;
+  }
+}
+@media (max-width: 435px) {
+  .section_quatang .main .box_item:last-of-type img.ab {
+    bottom: 0;
+  }
+}
+.section_quatang .main .box_item {
+  background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/asset_23.png");
+  font-weight: 600;
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  padding: 15px 0;
+}
+@media (min-width: 768px) {
+  .section_quatang .main .box_item {
+    height: 500px;
+  }
+}
+.section_quatang .main .box_item .n {
+  text-align: center;
+}
+.section_quatang .main .box_item .n .number {
+  margin-top: 0;
+  background: linear-gradient(to right, #895500, #F0C964, #A16f16, #925E08, #EABD54);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: 700;
+}
+@media (min-width: 1200px) {
+  .section_quatang .main .box_item .n .number {
+    font-size: 75px;
+  }
+}
+@media (max-width: 576px) {
+  .section_quatang .main .box_item .n .number {
+    font-size: 30px;
+  }
+}
+.section_quatang .main .box_item .n .suat {
+  background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/asset_17.png");
+  font-weight: 600;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 24px;
+  display: inline-block;
+  width: 50px;
+  color: #84571B;
+  left: -15px;
+  top: -5px;
+  position: relative;
+}
+@media (max-width: 576px) {
+  .section_quatang .main .box_item .n .suat {
+    left: -5px;
+  }
+}
+.section_quatang .main .box_item .giatri {
+  background-image: url("https://wowtop.vn/wowtop/assets/image/dk_dung_thu/asset_22.png") !important;
+}
+.section_quatang .main .box_item .giatri > div {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+}
+@media (max-width: 576px) {
+  .section_quatang .main .box_item .giatri > div {
+    top: 30px;
+  }
+}
+.section_quatang .main .box_item .giatri small {
+  color: white;
+}
+.section_quatang .main .box_item .giatri small:last-of-type {
+  font-size: 18px;
+}
+.section_quatang .main .box_item .img img {
+  margin: 0 auto;
+}
+
+.section_ct_toi_uu.sp {
+  top: 0;
+  margin-bottom: 0;
+}
+
+.section_ct_toi_uu.pc {
+  margin-top: 15px;
+}
+
+#form .select2-container--default .select2-selection--single {
+  height: 42px;
+  border-radius: 20px;
+  border: none;
+}
+#form .select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #444;
+  line-height: 42px;
+  padding-left: 15px;
+  font-style: italic;
+  font-size: 14px;
+}
+#form .select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 36px;
+}
+
+.select2-results__option {
+  font-size: 14px;
+}
+
+span.select2.select2-container.select2-container--default {
+  max-width: 100%;
+  width: 100% !important;
+}
