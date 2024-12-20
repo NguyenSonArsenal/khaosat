@@ -9,7 +9,9 @@ class Khoa extends Model
 {
     use SoftDeletes;
 
+    const MAX_LENGTH_MAKHOA = 5;
+
     public $table = 'khoa';
 
-    public $fillable = ['name', 'slug'];
+    public $fillable = ['name', 'slug', 'makhoa'];
 }

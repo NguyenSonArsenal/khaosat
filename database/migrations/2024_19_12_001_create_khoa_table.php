@@ -15,8 +15,9 @@ class CreateKhoaTable extends Migration
     {
         Schema::create('khoa', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->comment('Tên danh mục tin tức');
-            $table->string('slug')->comment('Slug danh mục tin tức');
+            $table->string('name')->comment('Tên khoa');
+            $table->string('makhoa', 5)->comment('Mã khoa');
+            $table->string('slug')->comment('slug');
             $table->timestamps();
             $table->softDeletes();
         });

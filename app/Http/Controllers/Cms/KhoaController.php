@@ -59,6 +59,7 @@ class KhoaController extends BaseCmsController
             }
             $entity->name = request('name');
             $entity->slug = createSlug(request('name'));
+            $entity->makhoa = createSlug(request('makhoa'));
             $entity->save();
             return backRouteSuccess(cmsRouteName('khoa.index'), t('update_success'));
         } catch (\Exception $e) {

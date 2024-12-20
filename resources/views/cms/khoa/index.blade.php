@@ -30,6 +30,7 @@
                   <tr>
                     <th scope="col">STT</th>
                     <th scope="col">Tên khoa</th>
+                    <th scope="col">Mã khoa</th>
                     <th scope="col">Thời gian tạo</th>
                     <th scope="col">Thời gian cập nhật</th>
                     <th scope="col">Hành động</th>
@@ -40,6 +41,7 @@
                     <tr>
                       <td>{{ getSTTCms($dataList, $key) }}</td>
                       <td>{{ $item->name }}</td>
+                      <td>{{ $item->makhoa }}</td>
                       <td>{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
                       <td>{{ date('d-m-Y H:i:s', strtotime($item->updated_at)) }}</td>
                       <td>

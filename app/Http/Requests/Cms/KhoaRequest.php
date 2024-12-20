@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Cms;
 
+use App\Models\Khoa;
 use Illuminate\Foundation\Http\FormRequest;
 
 class KhoaRequest extends FormRequest
@@ -23,8 +24,11 @@ class KhoaRequest extends FormRequest
      */
     public function rules()
     {
+        $id = request('id');
+        $maxLengthMaKhoa = Khoa::MAX_LENGTH_MAKHOA;
         $rules = [
             'name' => 'required|max:255',
+            'makhoa' => "required|max:$maxLengthMaKhoa|unique:khoa,makhoa,$id",
         ];
         return $rules;
     }

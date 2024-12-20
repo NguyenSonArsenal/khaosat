@@ -17,8 +17,8 @@ class CreateAdminTable extends Migration
             $table->id();
             $table->string('email');
             $table->string('password');
-            $table->string('role');
-            $table->integer('khoa_id');
+            $table->string('role')->nullable();
+            $table->integer('khoa_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

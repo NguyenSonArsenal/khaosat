@@ -17,7 +17,6 @@ class CreateQuestionTable extends Migration
             $table->bigIncrements('id');
             $table->string('question');
             $table->integer('khoa_id');
-            $table->integer('created_id');
             $table->string('da_a');
             $table->string('da_b');
             $table->string('da_c');

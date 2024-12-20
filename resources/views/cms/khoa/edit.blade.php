@@ -2,6 +2,10 @@
 
 @section('title', 'Admin - Cập nhật thông tin khoa')
 
+@push('scripts')
+  <script src="{{ asset('cms/js/pages/khoa.js') }}"></script>
+@endpush
+
 @section('content')
   <div class="content-page teacher-page">
     <div class="page-breadcrumb">
@@ -32,6 +36,8 @@
                     @include('cms.layout.structures._error_validate')
                     @include('cms.layout.structures._notification')
 
+                    <input type="hidden" name="id" value="{{ $entity->id }}">
+
                     <div class="row">
                       <div class="col-md-6">
                         <div class="mb-3">
@@ -46,6 +52,17 @@
                         <div class="mb-3">
                           <label class="form-label">Slug</label>
                           <input type="text" class="form-control rounded-pill" name="slug" readonly value="{{ $entity->slug }}">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Mã khoa {!! required() !!}</label>
+                          <input type="text" class="form-control rounded-pill" name="makhoa" value="{{ oldInput(old('makhoa'), $entity->makhoa) }}"
+                                 placeholder="Nhập mã khoa">
+                          <small class="text-danger">Mã khoa {{ \App\Models\Khoa::MAX_LENGTH_MAKHOA }} kí tự, không chứa dấu cách</small>
                         </div>
                       </div>
                     </div>
