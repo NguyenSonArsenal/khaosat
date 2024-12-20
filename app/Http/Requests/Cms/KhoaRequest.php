@@ -28,7 +28,7 @@ class KhoaRequest extends FormRequest
         $maxLengthMaKhoa = Khoa::MAX_LENGTH_MAKHOA;
         $rules = [
             'name' => 'required|max:255',
-            'makhoa' => "required|max:$maxLengthMaKhoa|unique:khoa,makhoa,$id",
+            'makhoa' => "required|max:$maxLengthMaKhoa|unique:khoa,makhoa,$id,id,deleted_at,NULL",
         ];
         return $rules;
     }

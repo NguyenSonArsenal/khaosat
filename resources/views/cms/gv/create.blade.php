@@ -33,6 +33,8 @@
                     @include('cms.layout.structures._error_validate')
                     @include('cms.layout.structures._notification')
 
+                    <input type="hidden" name="id" value="">
+
                     <div class="card-body">
                       <div class="row">
                         <div class="col-sm-6">

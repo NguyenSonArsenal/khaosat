@@ -1,0 +1,41 @@
+$font-stack: sans-serif;
+$primary-color: #3498db;
+
+$color1: #474747;
+$color2: #222222;
+
+$header-height: 3.5rem;
+
+$normal-font-size: .938rem;
+// Responsive typography
+@media screen and (min-width: 1024px){
+  $--normal-font-size: 1rem;
+}
+
+/*========== Font weight ==========*/
+$--font-regular: 400;
+$--font-semi-bold: 600;
+
+
+/*========== Colors ==========*/
+$black: hsl(220, 24%, 12%);
+$black-light: hsl(220, 24%, 15%);
+$black-lighten: hsl(220, 20%, 18%);
+$white: #fff;
+$body: hsl(220, 100%, 97%);
+
+$dropdown_menu_width: 150px;
+
+
+/*========== Ecommerce ==========*/
+$black1: #02182B;
+$black2: #072136;
+$blackXanh: #112E47;
+$xam: #EBEBEB;
+$ptb50Pc: 50px;
+$ptb75Pc: 75px;
+$fontSize: 16px;
+$daCam: #CF5C36;
+$danger: #dc3545;
+$containerMaxWidth: 1200px;
+/*========== End ecommerce ==========*/

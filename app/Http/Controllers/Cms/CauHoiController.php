@@ -15,7 +15,7 @@ class CauHoiController extends BaseCmsController
 {
     public function index($id)
     {
-        $dataList = Question::query()->with('khoa')->where('khoa_id', $id)->paginate(getCmsPagination());
+        $dataList = Question::query()->with('khoa')->where('khoa_id', $id)->orderBy('id', 'desc')->paginate(getCmsPagination());
 
         $viewData = [
             'dataList' => $dataList,

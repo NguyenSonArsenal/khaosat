@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\News;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,5 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(KhoaTableSeeder::class);
+        $this->call(AdminTableSeeder::class);
+        $this->call(QuestionTableSeeder::class);
     }
 }

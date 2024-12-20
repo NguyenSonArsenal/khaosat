@@ -54,7 +54,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->_namespaceCms)
                 ->group(base_path('routes/cms.php'));
 
-            Route::middleware(['web', 'redirect'])
+            Route::middleware(['web'])
                 ->name('client.')
                 ->namespace($this->_namespaceClient)
                 ->group(base_path('routes/client.php'));

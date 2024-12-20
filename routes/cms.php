@@ -27,19 +27,5 @@ Route::group(['middleware' => ['authCms']], function() {
     Route::put('gv/update/{gvId}', ['as' => 'gv.update', 'uses' => 'GvController@update']);
     Route::delete('gv/delete/{gvId}', ['as' => 'gv.destroy', 'uses' => 'GvController@destroy']);
 
-    Route::get('contact', ['as' => 'contact', 'uses' => 'ContactController@index']);
-    Route::delete('contact/delete/{id}', ['as' => 'contact.delete', 'uses' => 'ContactController@delete']);
-    Route::resource('product', 'ProductController');
-    Route::resource('category-new', 'CategoryNewController')->except(['show']);
-    Route::resource('news', 'NewsController')->except(['show']);
-    Route::get('news/hot', ['as' => 'newx_hot', 'uses' => 'NewsController@getHotNews']); // fake news_hot to active menu
-    Route::get('du-doan-chieu-cao', ['as' => 'ddcc.index', 'uses' => 'DdccController@index']);
-    Route::get('dang-ki-dung-thu', ['as' => 'dkdt.index', 'uses' => 'DkdtController@index']);
-    Route::get('dang-ki-dung-thu/excel', ['as' => 'dkdt.excel', 'uses' => 'DkdtController@excel']);
-    Route::get('du-doan-chieu-cao/{id}', ['as' => 'ddcc.show', 'uses' => 'DdccController@show']);
-    Route::post('news/arrange_hot', ['as' => 'news_arrange_hot.post', 'uses' => 'NewsController@arrangeHotNews']);
-    Route::resource('image_manager', 'ImageManagerController')->only(['index', 'create', 'store', 'destroy']);
-    Route::resource('redirect', 'RedirectController')->except(['show']);
-    Route::resource('config', 'ConfigController')->except(['show']);
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

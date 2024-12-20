@@ -1,0 +1,252 @@
+/*========== Font weight ==========*/
+/*========== Colors ==========*/
+/*========== Ecommerce ==========*/
+/*========== End ecommerce ==========*/
+main {
+  background: #EBEBEB;
+  padding: 25px 0;
+  margin-bottom: 46px;
+}
+
+.line_total {
+  margin: 15px 0;
+}
+
+.section_data {
+  min-height: 500px;
+}
+.section_data .td_content {
+  line-height: 22px;
+}
+
+.content {
+  padding: 20px;
+  border-radius: 8px;
+  background: white;
+}
+.content table.order {
+  width: 100%;
+  margin: 20px 0;
+}
+.content table.order tr td:last-of-type, .content table.order tr th:last-of-type {
+  text-align: center;
+}
+.content table.order thead {
+  border-bottom: 1px solid #565656;
+}
+.content table.order thead tr th {
+  color: #CF5C36;
+  font-weight: 500;
+  padding-bottom: 10px;
+  text-align: left;
+}
+.content table.order thead tr th:first-of-type {
+  width: 10%;
+}
+.content table.order thead tr th.total {
+  width: 30%;
+}
+.content table.order tbody tr {
+  border-bottom: 1px solid #EBEBEB;
+}
+.content table.order tbody tr:hover {
+  background: #EBEBEB;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.content table.order tbody tr td:first-of-type a {
+  color: #CF5C36;
+}
+.content table.order tbody tr td {
+  color: hsl(220, 24%, 12%);
+  padding: 8px 0;
+}
+.content table.order tbody tr td.view a {
+  color: #CF5C36;
+  border: 1px solid #CF5C36;
+  font-size: 14px;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+.content table.order .money {
+  display: flex;
+  align-items: center;
+}
+.content table.order .money .icon i {
+  color: #CF5C36;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.content .table_export {
+  margin: 20px 0;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.content .table_export th, .content .table_export td {
+  padding: 12px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.content .data_pc {
+  display: table;
+}
+
+.content .data_sp {
+  display: none;
+}
+
+.btn_export {
+  padding: 6px;
+  height: 30px;
+  background: #0d6efd;
+}
+
+.section_search {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+.section_search .btn_search {
+  padding: 6px;
+  height: 30px;
+}
+.section_search .btn_reset {
+  padding: 6px;
+  height: 30px;
+  background: #EBEBEB;
+  color: hsl(220, 24%, 12%);
+  display: inline;
+}
+.section_search form .input {
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.section_search form .input .name {
+  width: 50%;
+}
+.section_search form .input .date {
+  width: 250px;
+}
+.section_search form input, .section_search form select {
+  border: 1px solid #E2E8F0;
+  padding: 6px 8px;
+  margin: 4px 0 2px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 36px;
+  width: 100%;
+}
+.section_search form .bottom {
+  margin-top: 15px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .section_search form .input .name {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .section_data {
+    min-height: 250px;
+  }
+  main {
+    margin-bottom: 110px;
+  }
+}
+@media (max-width: 767px) {
+  .content .data_pc {
+    display: none;
+  }
+  .content {
+    padding: 15px;
+  }
+  .content .data_sp {
+    display: block;
+    margin: 15px 0;
+  }
+  .content .data_sp .item {
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 15px;
+    display: grid;
+    gap: 10px;
+  }
+  .content .data_sp .item div span:first-of-type {
+    font-weight: 500;
+  }
+  .content .data_sp .item .row1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .section_search form .input {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .section_search form .input .name, .section_search form .input .date {
+    width: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .head {
+    line-height: 24px;
+  }
+}
+
+
+.main .uk-article {
+    margin-bottom: 15px;
+}
+.main .item {
+    background: white;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    padding: 16px;
+}
+.main .item label {
+    display: block;
+    margin-bottom: 4px;
+}
+.main .item .answer label:not(:last-of-type) {
+    margin-bottom: 8px;
+}
+.main .item .question {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.main .item span.text-wrong {
+    margin-left: 4px;
+}
+.form-group {
+    margin-bottom: 10px;
+}
+input[type=text],input[type=email], select, textarea {
+    width: 100%; /* Full width */
+    padding: 8px !important; /* Some padding */
+    border: 1px solid #ccc !important; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 0px !important; /* Add a top margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+button.submit {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    background: #04AA6D;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+}
+button.submit:hover {
+    opacity: 0.8;
+}
+

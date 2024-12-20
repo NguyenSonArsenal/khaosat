@@ -17,10 +17,17 @@
               @include('cms.layout.structures._notification')
 
               <div class="card-body__head d-flex">
-                <h5 class="card-title">Danh sách</h5>
-                <a href="{{route('cms.question.create', ['id' => $khoaId])}}">
-                  <button type="button" class="btn btn-cyan btn-sm">Thêm mới</button>
-                </a>
+                <h5 class="card-title">Danh sách ({{ $dataList->total() }} bản ghi)</h5>
+                <div>
+                  @if (!cmsCurrentUser()->khoa_id)
+                    <a href="{{route('cms.khoa.index')}}" style="margin-right: 2px">
+                      <button type="button" class="btn btn-cyan btn-sm">Quay lại</button>
+                    </a>
+                  @endif
+                  <a href="{{route('cms.question.create', ['id' => $khoaId])}}">
+                    <button type="button" class="btn btn-cyan btn-sm">Thêm mới</button>
+                  </a>
+                </div>
               </div>
 
               <div id="zero_config_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -28,6 +35,7 @@
                 <table class="table table-striped table-bordered dataTable" role="grid">
                   <thead>
                   <tr>
+                    <th scope="col">STT</th>
                     <th scope="col">Câu hỏi</th>
                     <th scope="col">Đáp án A</th>
                     <th scope="col">Đáp án B</th>
@@ -40,6 +48,7 @@
                   <tbody>
                   @foreach($dataList as $key => $entity )
                     <tr>
+                      <td>{{ getSTTCms($dataList, $key) }}</td>
                       <td>{{ $entity->question }}</td>
                       <td>{{ $entity->da_a }}</td>
                       <td>{{ $entity->da_b }}</td>

@@ -41,13 +41,13 @@ class Handler extends ExceptionHandler
 
     function render($request, Throwable $exception)
     {
-        if ($this->isHttpException($exception)) {
-            if ($exception->getStatusCode() == 404) {
-                if (!str_contains(request()->url(), getConstant('CMS_PREFIX'))) {
-                    return redirect()->route(clientRouteName('page_not_found'));
-                }
-            }
-        }
+//        if ($this->isHttpException($exception)) {
+//            if ($exception->getStatusCode() == 404) {
+//                if (!str_contains(request()->url(), getConstant('CMS_PREFIX'))) {
+//                    return redirect()->route(clientRouteName('page_not_found'));
+//                }
+//            }
+//        }
         return parent::render($request, $exception);
     }
 }

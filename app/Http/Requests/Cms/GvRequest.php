@@ -23,16 +23,12 @@ class GvRequest extends FormRequest
      */
     public function rules()
     {
-        $rules['email'] = 'bail|required|max:64|unique:admin,email,' . request('id');
-
-        if (request('id')) {
-            $rules = [
-                'password' => 'bail|nullable|confirmed|min:6|max:255',
-            ];
+        $id = request('id');
+        $rules['email'] = "bail|required|max:64|unique:admin,email,$id,id,deleted_at,NULL";
+        if ($id) {
+            $rules['password'] = 'bail|nullable|confirmed|min:6|max:255';
         } else {
-            $rules = [
-                'password' => 'bail|required|confirmed|min:6|max:255',
-            ];
+            $rules['password'] = 'bail|required|confirmed|min:6|max:255';
         }
         return $rules;
     }

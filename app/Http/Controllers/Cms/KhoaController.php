@@ -17,7 +17,7 @@ class KhoaController extends BaseCmsController
 
     public function index()
     {
-        $dataList = Khoa::query()->paginate(getCmsPagination());
+        $dataList = Khoa::query()->orderBy('id', 'desc')->paginate(getCmsPagination());
 
         $viewData = [
             'dataList' => $dataList

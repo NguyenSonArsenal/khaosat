@@ -13,7 +13,7 @@ class GvController extends BaseCmsController
 {
     public function index($id)
     {
-        $dataList = Admin::query()->where('khoa_id', $id)->paginate(getCmsPagination());
+        $dataList = Admin::query()->where('khoa_id', $id)->orderBy('id', 'desc')->paginate(getCmsPagination());
 
         $viewData = [
             'dataList' => $dataList,
@@ -63,6 +63,7 @@ class GvController extends BaseCmsController
                 $entity->password = bcrypt(request('password'));
             }
 
+            $entity->email = request('email');
             $entity->save();
 
             return backRouteSuccess(cmsRouteName('gv.index'), t('update_success'), ['id' => $entity->khoa_id]);

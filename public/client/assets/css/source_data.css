@@ -1,0 +1,45 @@
+/*========== Font weight ==========*/
+/*========== Colors ==========*/
+/*========== Ecommerce ==========*/
+/*========== End ecommerce ==========*/
+main {
+  background: #EBEBEB;
+  padding-bottom: 66px;
+}
+main .wrapper {
+  max-width: 600px;
+}
+
+.section_data {
+  padding: 20px;
+  border-radius: 8px;
+  background: white;
+  margin-top: 20px;
+  display: grid;
+  gap: 15px;
+}
+
+table, td, th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 10px 15px;
+}
+
+.item h3 {
+  margin-bottom: 5px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 767px) {
+  main {
+    padding-bottom: 150px;
+  }
+}
