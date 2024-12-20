@@ -20,6 +20,8 @@ Route::group(['middleware' => ['authCms']], function() {
     Route::put('cau-hoi-khao-sat/update/{questionId}', ['as' => 'question.update', 'uses' => 'CauHoiController@update']);
     Route::delete('cau-hoi-khao-sat/delete/{questionId}', ['as' => 'question.destroy', 'uses' => 'CauHoiController@destroy']);
 
+    Route::get('ket-qua-khao-sat/{makhoa}', ['as' => 'khaosat.ketqua', 'uses' => 'CauHoiController@ketqua']);
+
     Route::get('gv/{id}', ['as' => 'gv.index', 'uses' => 'GvController@index']);
     Route::get('gv/{id}/create', ['as' => 'gv.create', 'uses' => 'GvController@create']);
     Route::post('gv/{id}/store', ['as' => 'gv.store', 'uses' => 'GvController@store']);

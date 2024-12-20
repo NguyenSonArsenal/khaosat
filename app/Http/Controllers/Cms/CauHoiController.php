@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Cms\Base\BaseCmsController;
-use App\Http\Requests\Cms\KhoaRequest;
 use App\Http\Requests\Cms\QuestionRequest;
-use App\Models\CategoryNew;
+use App\Models\History;
 use App\Models\Khoa;
 use App\Models\Question;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
 class CauHoiController extends BaseCmsController
@@ -94,4 +93,30 @@ class CauHoiController extends BaseCmsController
             return backSystemError();
         }
     }
+
+    public function ketqua($maKhoa)
+    {
+        try {
+            $khoa = Khoa::where('makhoa', $maKhoa)->first();
+            if (empty($khoa)) {
+                abort(404); // @todo
+            }
+
+            $userIds = User::where('khoa_id', $khoa->id)->pluck('id')->toArray();
+            $dataList = History::with('user')->whereIn('user_id', $userIds)->paginate(getCmsPagination());
+
+            $viewData = [
+                'dataList' => $dataList,
+                'makhoa' => $maKhoa,
+                'khoaId' => $khoa->id,
+            ];
+
+            return view('cms.result.index', $viewData);
+        } catch (\Exception $e) {
+            dd($e);
+            Log::error($e);
+            return backSystemError();
+        }
+    }
+
 }

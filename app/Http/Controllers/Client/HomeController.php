@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\StoreSurveyRequest;
+use App\Models\History;
 use App\Models\Khoa;
 use App\Models\Question;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -24,6 +28,7 @@ class HomeController extends Controller
         $viewData = [
             'makhoa' => $makhoa,
             'question' => $question,
+            'khoa' => $khoa
         ];
 
         return view('client.index', $viewData);
@@ -31,6 +36,62 @@ class HomeController extends Controller
 
     public function store(StoreSurveyRequest $request)
     {
-        dd($request->all());
+        DB::beginTransaction();
+        try {
+            // insert to `user` table
+            $userId = User::insertGetId([
+                'name' => request('name'),
+                'email' => request('email'),
+                'phone' => request('phone'),
+                'khoa_id' => request('khoa_id'),
+            ]);
+
+            // insert to `history` table
+            $answers = request('answer');
+            foreach ($answers as $key => $answer) {
+                $q = Question::find($key);
+                $userDa = implode(',', $answer);
+                History::create([
+                    'question' => $q->question,
+                    'da_a' => $q->da_a,
+                    'da_b' => $q->da_b,
+                    'da_c' => $q->da_c,
+                    'da_d' => $q->da_d,
+                    'da' => $q->da,
+                    'user_da' => $userDa,
+                    'user_id' => $userId,
+                    'result' => $this->checkDa(explode(",", $q->da), $answer),
+                ]);
+            }
+            DB::commit();
+            return redirect()->to(clientRoute('khaosat.success', ['makhoa' => request('makhoa')]))->with('success', 'your message,here');
+        } catch (\Exception $e) {
+            Log::error($e);
+            DB::rollBack();
+            return backSystemError();
+        }
+    }
+
+    public function checkDa($correctAnswers = [], $userSelectedAnswers = [])
+    {
+        return empty(array_diff($correctAnswers, $userSelectedAnswers)) && empty(array_diff($userSelectedAnswers, $correctAnswers)) ? 1: 2;
+    }
+
+    public function success($makhoa)
+    {
+        if (empty($makhoa)) {
+            abort(404, "No book has been found.");
+        }
+
+        $khoa = Khoa::where('makhoa', $makhoa)->first();
+        if (empty($khoa)) {
+            abort(404);
+        }
+
+        if (session('success')) {
+            return view('client.success');
+        } else {
+            abort(404);
+        }
     }
 }

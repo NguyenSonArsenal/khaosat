@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Client;
 
+use App\Models\Question;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreSurveyRequest extends FormRequest
@@ -23,11 +24,17 @@ class StoreSurveyRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
-            'name' => 'required|max:64',
-            'email' => 'required|max:64',
-            'phone' => 'bail|numeric|digits:10',
-        ];
+        $questions = Question::query()->orderBy('id', 'desc')->where('khoa_id', request('khoa_id'))->get();
+
+        foreach ($questions as $question) {
+            $rules["answer.{$question['id']}"] = 'required|min:1';
+        }
+        $rules['name'] = 'max:64';
+        $rules['email'] = 'max:64';
+        $rules['phone'] = 'bail|nullable|numeric|digits:10';
+
+
+
         return $rules;
     }
 
@@ -37,5 +44,19 @@ class StoreSurveyRequest extends FormRequest
             'name' => 'họ tên',
             'phone' => 'số điện thoại',
         ];
+    }
+
+
+    public function messages()
+    {
+        $messages = [];
+
+        $questions = Question::query()->orderBy('id', 'desc')->where('khoa_id', request('khoa_id'))->get();
+        foreach ($questions as $question) {
+            $messages["answer.{$question['id']}.required"] = "Bạn phải chọn ít nhất một đáp án ";
+//            $messages["answer.{$question['id']}.array"] = "Dữ liệu cho câu hỏi '{$question['question']}' phải là dạng mảng.";
+        }
+
+        return $messages;
     }
 }
