@@ -25,42 +25,23 @@
             <div>Bài khảo sát khoa <strong>{{ $khoa->name }}</strong> gồm có {{ count($question) }} câu hỏi</div>
           </article>
 
-          @foreach($question as $key => $item)
+          @foreach($question as $key => $q)
             <div class="item">
-              <div class="question">{{ $key+1 }}. {{ $item->question }}</div>
+              <div class="question">{{ $key+1 }}. {{ $q->question }}</div>
               <div class="answer">
-                <label>
-                  <input type="checkbox" name="answer[{{$item->id}}][]" value="a"
-                    {{ !empty(old("answer.{$item['id']}")) && in_array('a', old("answer.{$item['id']}")) ? 'checked' : '' }}
-                  >
-                  <span class="text text-wrong">{{$item->da_a}}</span>
-                </label>
-
-                <label>
-                  <input type="checkbox" name="answer[{{$item->id}}][]" value="b"
-                    {{ !empty(old("answer.{$item['id']}")) && in_array('b', old("answer.{$item['id']}")) ? 'checked' : '' }}
-                  >
-                  <span class="text text-wrong">{{$item->da_b}}</span>
-                </label>
-
-                <label>
-                  <input type="checkbox" name="answer[{{$item->id}}][]" value="c"
-                    {{ !empty(old("answer.{$item['id']}")) && in_array('c', old("answer.{$item['id']}")) ? 'checked' : '' }}
-                  >
-                  <span class="text text-wrong">{{$item->da_c}}</span>
-                </label>
-
-                <label>
-                  <input type="checkbox" name="answer[{{$item->id}}][]" value="d"
-                    {{ !empty(old("answer.{$item['id']}")) && in_array('d', old("answer.{$item['id']}")) ? 'checked' : '' }}
-                  >
-                  <span class="text text-wrong">{{$item->da_d}}</span>
-                </label>
+                @foreach($q->surveyOptions as $k => $item)
+                  <label>
+                    <input type="checkbox" name="answer[{{$q->id}}][]" value="{{ $item->id }}"
+                      {{ !empty(old("answer.{$q['id']}")) && in_array($item->id, old("answer.{$q['id']}")) ? 'checked' : '' }}
+                    >
+                    <span class="text text-wrong">{{ $item->text }}</span>
+                  </label>
+                @endforeach
               </div>
 
-              @if ($errors->has("answer.{$item->id}"))
+              @if ($errors->has("answer.{$q->id}"))
                 <div style="color: red;">
-                  {{ $errors->first("answer.{$item->id}") }}
+                  {{ $errors->first("answer.{$q->id}") }}
                 </div>
               @endif
             </div>

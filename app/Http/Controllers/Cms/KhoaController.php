@@ -11,13 +11,9 @@ use Illuminate\Support\Facades\Log;
 
 class KhoaController extends BaseCmsController
 {
-    public function __construct()
-    {
-    }
-
     public function index()
     {
-        $dataList = Khoa::query()->orderBy('id', 'desc')->paginate(getCmsPagination());
+        $dataList = Khoa::query()->with(['user'])->orderBy('id', 'desc')->paginate(getCmsPagination());
 
         $viewData = [
             'dataList' => $dataList

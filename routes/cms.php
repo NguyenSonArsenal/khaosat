@@ -21,6 +21,7 @@ Route::group(['middleware' => ['authCms']], function() {
     Route::delete('cau-hoi-khao-sat/delete/{questionId}', ['as' => 'question.destroy', 'uses' => 'CauHoiController@destroy']);
 
     Route::get('ket-qua-khao-sat/{makhoa}', ['as' => 'khaosat.ketqua', 'uses' => 'CauHoiController@ketqua']);
+    Route::get('ket-qua-khao-sat/{makhoa}/{userId}', ['as' => 'khaosat.ketqua.show', 'uses' => 'CauHoiController@ketquaChiTiet']);
 
     Route::get('gv/{id}', ['as' => 'gv.index', 'uses' => 'GvController@index']);
     Route::get('gv/{id}/create', ['as' => 'gv.create', 'uses' => 'GvController@create']);

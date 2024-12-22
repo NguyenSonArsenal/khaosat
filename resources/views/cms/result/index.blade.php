@@ -29,34 +29,26 @@
                   <thead>
                   <tr>
                     <th scope="col">STT</th>
-                    <th scope="col">Câu hỏi</th>
-                    <th scope="col">Đáp án A</th>
-                    <th scope="col">Đáp án B</th>
-                    <th scope="col">Đáp án C</th>
-                    <th scope="col">Đáp án D</th>
-                    <th scope="col">Đáp án đúng</th>
-                    <th scope="col">Đáp án user</th>
-                    <th scope="col">User</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">SĐT</th>
                     <th scope="col">Thời gian tạo</th>
+                    <th scope="col">Hành động</th>
                   </tr>
                   </thead>
                   <tbody>
                   @foreach($dataList as $key => $item)
                     <tr>
                       <td>{{ getSTTCms($dataList, $key) }}</td>
-                      <td>{{ $item->question }}</td>
-                      <td>{{ $item->da_a }}</td>
-                      <td>{{ $item->da_b }}</td>
-                      <td>{{ $item->da_c }}</td>
-                      <td>{{ $item->da_d }}</td>
-                      <td>{{ $item->da }}</td>
-                      <td>{{ $item->user_da }}</td>
-                      <td>
-                        <div>Name: {{ $item->user->name }}</div>
-                        <div>Email: {{ $item->user->email }}</div>
-                        <div>Phone: {{ $item->user->phone }}</div>
-                      </td>
+                      <td>{{ $item->name }}</td>
+                      <td>{{ $item->email }}</td>
+                      <td>{{ $item->phone }}</td>
                       <td>{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
+                      <td>
+                        <a href="{{ cmsRoute('khaosat.ketqua.show', ['makhoa' => $makhoa, 'userId' => $item->id]) }}">
+                          <button type="button" class="btn btn-cyan btn-xs">Xem</button>
+                        </a>
+                      </td>
                     </tr>
                   @endforeach
                   </tbody>

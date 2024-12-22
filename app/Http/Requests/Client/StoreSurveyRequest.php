@@ -33,8 +33,6 @@ class StoreSurveyRequest extends FormRequest
         $rules['email'] = 'max:64';
         $rules['phone'] = 'bail|nullable|numeric|digits:10';
 
-
-
         return $rules;
     }
 

@@ -45,7 +45,7 @@
                       <td>{{ $item->name }}</td>
                       <td>{{ $item->makhoa }}</td>
                       <td><a href="{{ clientRoute('home', ['makhoa' => $item->makhoa]) }}">Link</a></td>
-                      <td><a href="{{ cmsRoute('khaosat.ketqua', ['makhoa' => $item->makhoa]) }}">Link</a></td>
+                      <td><a href="{{ cmsRoute('khaosat.ketqua', ['makhoa' => $item->makhoa]) }}">{{ $item->user()->count() }}</a></td>
                       <td>{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
                       <td>{{ date('d-m-Y H:i:s', strtotime($item->updated_at)) }}</td>
                       <td>

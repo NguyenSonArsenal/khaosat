@@ -7,6 +7,7 @@ use App\Http\Requests\Client\StoreSurveyRequest;
 use App\Models\History;
 use App\Models\Khoa;
 use App\Models\Question;
+use App\Models\Survey;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -23,7 +24,7 @@ class HomeController extends Controller
         if (empty($khoa)) {
             abort(404);
         }
-        $question = Question::query()->orderBy('id', 'desc')->where('khoa_id', $khoa->id)->get();
+        $question = Question::query()->with('surveyOptions')->orderBy('id', 'desc')->where('khoa_id', $khoa->id)->get();
 
         $viewData = [
             'makhoa' => $makhoa,
@@ -44,28 +45,25 @@ class HomeController extends Controller
                 'email' => request('email'),
                 'phone' => request('phone'),
                 'khoa_id' => request('khoa_id'),
+                'created_at' => now(),
             ]);
 
             // insert to `history` table
             $answers = request('answer');
+
             foreach ($answers as $key => $answer) {
-                $q = Question::find($key);
-                $userDa = implode(',', $answer);
-                History::create([
-                    'question' => $q->question,
-                    'da_a' => $q->da_a,
-                    'da_b' => $q->da_b,
-                    'da_c' => $q->da_c,
-                    'da_d' => $q->da_d,
-                    'da' => $q->da,
-                    'user_da' => $userDa,
-                    'user_id' => $userId,
-                    'result' => $this->checkDa(explode(",", $q->da), $answer),
-                ]);
+                foreach ($answer as $item) {
+                    Survey::create([
+                        'question_id' => $key,
+                        'user_id' => $userId,
+                        'survey_options_id' => $item,
+                    ]);
+                }
             }
             DB::commit();
             return redirect()->to(clientRoute('khaosat.success', ['makhoa' => request('makhoa')]))->with('success', 'your message,here');
         } catch (\Exception $e) {
+            dd($e);
             Log::error($e);
             DB::rollBack();
             return backSystemError();

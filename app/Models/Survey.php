@@ -11,5 +11,10 @@ class Survey extends Model
 
     public $table = 'survey';
 
-    public $fillable = ['question_id', 'choices_id', 'user_id'];
+    public $fillable = ['question_id', 'survey_options_id', 'user_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(user::class, 'user_id', 'id');
+    }
 }

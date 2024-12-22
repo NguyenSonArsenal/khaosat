@@ -7,6 +7,7 @@ use App\Http\Requests\Cms\QuestionRequest;
 use App\Models\History;
 use App\Models\Khoa;
 use App\Models\Question;
+use App\Models\Survey;
 use App\Models\SurveyOptions;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -143,8 +144,7 @@ class CauHoiController extends BaseCmsController
                 abort(404); // @todo
             }
 
-            $userIds = User::where('khoa_id', $khoa->id)->pluck('id')->toArray();
-            $dataList = History::with('user')->whereIn('user_id', $userIds)->paginate(getCmsPagination());
+            $dataList = User::where('khoa_id', $khoa->id)->paginate(getCmsPagination());
 
             $viewData = [
                 'dataList' => $dataList,
@@ -153,6 +153,31 @@ class CauHoiController extends BaseCmsController
             ];
 
             return view('cms.result.index', $viewData);
+        } catch (\Exception $e) {
+            Log::error($e);
+            return backSystemError();
+        }
+    }
+
+    public function ketquaChiTiet($maKhoa, $userId)
+    {
+        try {
+            $khoa = Khoa::where('makhoa', $maKhoa)->first();
+            if (empty($khoa)) {
+                abort(404); // @todo
+            }
+
+            $survey = Survey::where('user_id', $userId)->pluck('survey_options_id')->toArray();
+            $question = Question::query()->with('surveyOptions')->orderBy('id', 'desc')->where('khoa_id', $khoa->id)->get();
+
+            $viewData = [
+                'survey' => $survey,
+                'makhoa' => $maKhoa,
+                'khoaId' => $khoa->id,
+                'question' => $question,
+            ];
+
+            return view('cms.result.show', $viewData);
         } catch (\Exception $e) {
             Log::error($e);
             return backSystemError();

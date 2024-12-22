@@ -14,4 +14,9 @@ class Khoa extends Model
     public $table = 'khoa';
 
     public $fillable = ['name', 'slug', 'makhoa'];
+
+    public function user()
+    {
+        return $this->hasMany(User::class,'khoa_id');
+    }
 }
