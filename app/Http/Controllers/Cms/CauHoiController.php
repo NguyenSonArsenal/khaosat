@@ -7,14 +7,16 @@ use App\Http\Requests\Cms\QuestionRequest;
 use App\Models\History;
 use App\Models\Khoa;
 use App\Models\Question;
+use App\Models\SurveyOptions;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class CauHoiController extends BaseCmsController
 {
     public function index($id)
     {
-        $dataList = Question::query()->with('khoa')->where('khoa_id', $id)->orderBy('id', 'desc')->paginate(getCmsPagination());
+        $dataList = Question::query()->with(['khoa', 'surveyOptions'])->where('khoa_id', $id)->orderBy('id', 'desc')->paginate(getCmsPagination());
 
         $viewData = [
             'dataList' => $dataList,
@@ -34,18 +36,37 @@ class CauHoiController extends BaseCmsController
 
     public function store(QuestionRequest $request, $khoaId)
     {
-        $params = $request->all();
-        $params['da'] = implode(',', $request->input('da', []));
-        $params['khoa_id'] = $khoaId;
-        $entity = new Question();
-        $entity->fill($params);
-        $entity->save();
-        return backRouteSuccess('cms.question.index', transMessage('create_success'), ['id' => $khoaId]);
+        DB::beginTransaction();
+        try {
+            // insert to `question` table
+            $questionId = Question::insertGetId([
+                'question' => request('question'),
+                'khoa_id' => $khoaId,
+            ]);
+
+            // insert to `choices` table
+            foreach (request('options', []) as $text) {
+                if (empty($text)) {
+                    continue;
+                }
+                SurveyOptions::create([
+                    'question_id' => $questionId,
+                    'text' => $text,
+                ]);
+            }
+
+            DB::commit();
+            return backRouteSuccess('cms.question.index', transMessage('create_success'), ['id' => $khoaId]);
+        } catch (\Exception $e) {
+            Log::error($e);
+            DB::rollBack();
+            return backSystemError();
+        }
     }
 
     public function edit($questionId)
     {
-        $entity = Question::where('id', $questionId)->first();
+        $entity = Question::with('surveyOptions')->where('id', $questionId)->first();
         if (empty($entity)) {
             return backRouteSuccess(cmsRouteName('question.index'), t('not_found'), ['id' => $entity->khoa_id]);
         }
@@ -55,25 +76,44 @@ class CauHoiController extends BaseCmsController
             'data' => $entity,
             'da' => $da,
         ];
+
         return view('cms.question.edit', $viewData);
     }
 
     public function update(QuestionRequest $request, $questionId)
     {
+        DB::beginTransaction();
         try {
             $entity = Question::where('id', $questionId)->first();
 
-            $entity->question = $request->question;
-            $entity->da_a = $request->da_a;
-            $entity->da_b = $request->da_b;
-            $entity->da_c = $request->da_c;
-            $entity->da_d = $request->da_d;
-            $entity->da = implode(',', $request->input('da', []));
 
+            // Duyệt qua mảng tùy chọn mới
+
+            $idSurveyOld = SurveyOptions::query()->where('question_id', $questionId)->pluck('id')->toArray();
+
+            $arrDel = array_diff($idSurveyOld, array_keys($request->input('options')));
+
+            // delete
+            SurveyOptions::whereIn('id', $arrDel)->delete();
+            foreach ($request->input('options') as $index => $optionText) {
+                if (in_array($index, $idSurveyOld)) {
+                    SurveyOptions::where('id', $index)->update(['text' => $optionText]); // update
+                } else {
+                    // store
+                    SurveyOptions::create([
+                        'question_id' => $questionId,
+                        'text' => $optionText
+                    ]);
+                }
+            }
+
+            $entity->question = $request->question;
             $entity->save();
 
+            DB::commit();
             return backRouteSuccess(cmsRouteName('question.index'), t('update_success'), ['id' => $entity->khoa_id]);
         } catch (\Exception $e) {
+            DB::rollBack();
             Log::error($e);
             return backSystemError();
         }
@@ -87,6 +127,7 @@ class CauHoiController extends BaseCmsController
                 return backSystemError();
             }
             $entity->delete();
+            $entity->surveyOptions()->delete();
             return backSuccess(t('delete_success'));
         } catch (\Exception $e) {
             Log::error($e);
@@ -113,7 +154,6 @@ class CauHoiController extends BaseCmsController
 
             return view('cms.result.index', $viewData);
         } catch (\Exception $e) {
-            dd($e);
             Log::error($e);
             return backSystemError();
         }

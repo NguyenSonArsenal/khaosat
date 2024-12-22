@@ -37,11 +37,7 @@
                   <tr>
                     <th scope="col">STT</th>
                     <th scope="col">Câu hỏi</th>
-                    <th scope="col">Đáp án A</th>
-                    <th scope="col">Đáp án B</th>
-                    <th scope="col">Đáp án C</th>
-                    <th scope="col">Đáp án D</th>
-                    <th scope="col">Đáp án đúng</th>
+                    <th scope="col">Lựa chọn</th>
                     <th scope="col">Hành động</th>
                   </tr>
                   </thead>
@@ -50,11 +46,11 @@
                     <tr>
                       <td>{{ getSTTCms($dataList, $key) }}</td>
                       <td>{{ $entity->question }}</td>
-                      <td>{{ $entity->da_a }}</td>
-                      <td>{{ $entity->da_b }}</td>
-                      <td>{{ $entity->da_c }}</td>
-                      <td>{{ $entity->da_d }}</td>
-                      <td>{{ $entity->da }}</td>
+                      <td>
+                        @foreach($entity->surveyOptions as $key => $c)
+                          <div style="margin-bottom: 2px">Lựa chọn {{ $key+1 }}: {{ $c->text }}</div>
+                        @endforeach
+                      </td>
                       <td>
                         <div class="comment-footer d-flex">
                           <a href="{{ route('cms.question.edit', ['questionId' => $entity->id]) }}">

@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(KhoaTableSeeder::class);
         $this->call(AdminTableSeeder::class);
-        $this->call(QuestionTableSeeder::class);
+//        $this->call(QuestionTableSeeder::class);
     }
 }

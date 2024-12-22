@@ -11,10 +11,15 @@ class Question extends Model
 
     public $table = 'question';
 
-    public $fillable = ['question', 'da_a', 'da_b', 'da_c', 'da_d', 'da', 'khoa_id'];
+    public $fillable = ['question', 'image', 'khoa_id'];
 
     public function khoa()
     {
         return $this->belongsTo(Khoa::class, 'khoa_id', 'id');
+    }
+
+    public function surveyOptions()
+    {
+        return $this->hasMany(SurveyOptions::class,'question_id');
     }
 }
