@@ -60,3 +60,33 @@ run product: npm run production
 Cms: /cms/auth/login 
     admin@gmail.com/admin
 ```
+
+
+
+#### ========== FOR DOCKER ==========  
+- cp .env.example .env
+- nano .env
+```
+DB_HOST=IP
+DB_PORT=3307
+DB_DATABASE=khaosat
+DB_USERNAME=user_khaosat
+DB_PASSWORD=123456
+```
+- docker-compose up -d
+- docker exec -it app bash 
+    - composer install --ignore-platform-req=ext-zip
+    - php artisan key:generate
+    - php artisan optimize
+    - php artisan migrate && php artisan db:seed
+    - chmod -R 777 bootstrap/cache
+    - chmod -R 777 storage/logs/
+    - chmod -R 777 storage
+    - chmod -R 777 storage/framework
+    - chmod -R 777 public/media
+    - chmod -R 777 public/tmp_uploads
+
+- docker-compose exec php-fpm chown -R www-data:www-data /var/www/html
+- docker-compose exec php-fpm chmod -R 775 /var/www/html/storage
+- docker-compose exec php-fpm chmod -R 775 /var/www/html/bootstrap/cache
+#### ========== END FOR DOCKER ==========
