@@ -4,7 +4,7 @@
       <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
         <i class="ti-menu ti-close"></i>
       </a>
-      <a class="navbar-brand" href="{{ cmsRoute('dashboard') }}">
+      <a class="navbar-brand" href="{{ cmsRoute('khoa.index') }}">
         <span class="logo-text ms-2">
           <img src="{{ asset('cms/image/khao-sat.webp') }}" alt="homepage" class="light-logo" style="width: 100px">
         </span>
@@ -23,6 +23,10 @@
         </li>
       </ul>
       <ul class="navbar-nav float-right">
+        <li style="padding: 0px 15px; color: white;
+    font-size: 0.875rem;
+    line-height: 64px;
+    height: 64px;">{{ cmsCurrentUser()->email }}</li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href=""
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

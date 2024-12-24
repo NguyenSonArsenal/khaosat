@@ -9,7 +9,7 @@ class AuthController extends BaseCmsController
     public function showFormLogin()
     {
         if (cmsIsLogin()) {
-            return redirect()->route('cms.dashboard');
+            return redirect()->route('cms.khoa.index');
         }
         return view('cms.auth.login');
     }
@@ -22,7 +22,7 @@ class AuthController extends BaseCmsController
         ]);
 
         if ($checkLogin) {
-            return redirect()->route(cmsRouteName('dashboard'));
+            return redirect()->route(cmsRouteName('khoa.index'));
         }
 
 

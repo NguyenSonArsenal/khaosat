@@ -48,7 +48,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->_namespaceApi)
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
+            Route::middleware(['web'])
                 ->prefix(getConstant('CMS_PREFIX'))
                 ->name('cms.')
                 ->namespace($this->_namespaceCms)

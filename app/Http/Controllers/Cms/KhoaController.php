@@ -15,6 +15,10 @@ class KhoaController extends BaseCmsController
     {
         $dataList = Khoa::query()->with(['user'])->orderBy('id', 'desc')->paginate(getCmsPagination());
 
+        if (cmsCurrentUser()->khoa_id) {
+            $dataList = Khoa::query()->with(['user'])->where('id', cmsCurrentUser()->khoa_id)->orderBy('id', 'desc')->paginate(getCmsPagination());
+        }
+
         $viewData = [
             'dataList' => $dataList
         ];
@@ -24,7 +28,10 @@ class KhoaController extends BaseCmsController
 
     public function create()
     {
-        return view('cms.khoa.create');
+        if (empty(cmsCurrentUser()->khoa_id)) {
+            return view('cms.khoa.create');
+        }
+        abort(404);
     }
 
     public function store(KhoaRequest $request)
@@ -39,11 +46,19 @@ class KhoaController extends BaseCmsController
 
     public function edit($id)
     {
+        if (cmsCurrentUser()->khoa_id && cmsCurrentUser()->khoa_id != $id) {
+            abort(404);
+        }
         $entity = Khoa::where('id', $id)->first();
         if (empty($entity)) {
             return backRouteError(cmsRouteName('khoa.index'), transMessage('not_found'));
         }
-        return view('cms.khoa.edit', ['entity' => $entity]);
+
+        $viewData = [
+            'entity' => $entity,
+        ];
+
+        return view('cms.khoa.edit', $viewData);
     }
 
     public function update(KhoaRequest $request, $id)
@@ -55,7 +70,7 @@ class KhoaController extends BaseCmsController
             }
             $entity->name = request('name');
             $entity->slug = createSlug(request('name'));
-            $entity->makhoa = createSlug(request('makhoa'));
+            $entity->makhoa = request('makhoa');
             $entity->save();
             return backRouteSuccess(cmsRouteName('khoa.index'), t('update_success'));
         } catch (\Exception $e) {

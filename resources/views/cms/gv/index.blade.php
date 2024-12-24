@@ -19,14 +19,14 @@
               <div class="card-body__head d-flex">
                 <h5 class="card-title">Danh sách ({{ $dataList->total() }} bản ghi)</h5>
                 <div>
-                  @if (!cmsCurrentUser()->khoa_id)
-                    <a href="{{route('cms.khoa.index')}}" style="margin-right: 2px">
-                      <button type="button" class="btn btn-cyan btn-sm">Quay lại</button>
+                  <a href="{{route('cms.khoa.index')}}" style="margin-right: 2px">
+                    <button type="button" class="btn btn-cyan btn-sm">Quay lại</button>
+                  </a>
+                  @if (isCmsAdmin())
+                    <a href="{{route('cms.gv.create', ['khoaid' => $khoaId])}}">
+                      <button type="button" class="btn btn-cyan btn-sm">Thêm mới</button>
                     </a>
                   @endif
-                  <a href="{{route('cms.gv.create', ['id' => $khoaId])}}">
-                    <button type="button" class="btn btn-cyan btn-sm">Thêm mới</button>
-                  </a>
                 </div>
               </div>
 
@@ -48,20 +48,22 @@
                       <td>{{ date('d-m-Y H:i:s', strtotime($entity->created_at)) }}</td>
                       <td>{{ date('d-m-Y H:i:s', strtotime($entity->updated_at)) }}</td>
                       <td>
-                        <div class="comment-footer d-flex">
-                          <a href="{{ cmsRoute('gv.edit', ['gvId' => $entity->id]) }}">
-                            <button type="button" class="btn btn-cyan btn-xs">Sửa</button>
-                          </a>
-                          <form action="{{ cmsRoute('gv.destroy', ['gvId' => $entity->id]) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn-danger btn btn-xs rounded"
-                                    onclick="return confirm('Xoá. Bạn có chắc không?')"
-                            >
-                              Xóa
-                            </button>
-                          </form>
-                        </div>
+                        @if (isCmsAdmin())
+                          <div class="comment-footer d-flex">
+                            <a href="{{ cmsRoute('gv.edit', ['gvId' => $entity->id, 'khoaid' => $khoaId]) }}">
+                              <button type="button" class="btn btn-cyan btn-xs">Sửa</button>
+                            </a>
+                            <form action="{{ cmsRoute('gv.destroy', ['gvId' => $entity->id]) }}" method="post">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn-danger btn btn-xs rounded"
+                                      onclick="return confirm('Xoá. Bạn có chắc không?')"
+                              >
+                                Xóa
+                              </button>
+                            </form>
+                          </div>
+                        @endif
                       </td>
                     </tr>
                   @endforeach

@@ -25,6 +25,9 @@ class GvController extends BaseCmsController
 
     public function create($id)
     {
+        if (!isCmsAdmin()) {
+            abort(404);
+        }
         $viewData = [
             'khoaId' => $id
         ];
@@ -39,17 +42,21 @@ class GvController extends BaseCmsController
         $entity = new Admin();
         $entity->fill($params);
         $entity->save();
-        return backRouteSuccess('cms.gv.index', transMessage('create_success'), ['id' => $khoaId]);
+        return backRouteSuccess('cms.gv.index', transMessage('create_success'), ['khoaid' => $khoaId]);
     }
 
-    public function edit($gvId)
+    public function edit($khoaId, $gvId)
     {
+        if (!isCmsAdmin()) {
+            abort(404);
+        }
         $entity = Admin::where('id', $gvId)->first();
         if (empty($entity)) {
             abort(404);
         }
         $viewData = [
             'entity' => $entity,
+            'khoaId' => $khoaId,
         ];
         return view('cms.gv.edit', $viewData);
     }
@@ -66,7 +73,7 @@ class GvController extends BaseCmsController
             $entity->email = request('email');
             $entity->save();
 
-            return backRouteSuccess(cmsRouteName('gv.index'), t('update_success'), ['id' => $entity->khoa_id]);
+            return backRouteSuccess(cmsRouteName('gv.index'), t('update_success'), ['khoaid' => $entity->khoa_id]);
         } catch (\Exception $e) {
             Log::error($e);
             return backSystemError();

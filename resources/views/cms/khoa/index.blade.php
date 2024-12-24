@@ -19,9 +19,11 @@
               @include('cms.layout.structures._notification')
               <div class="card-body__head d-flex">
                 <h5 class="card-title">Danh sách ({{ $dataList->total() }} bản ghi)</h5>
-                <a href="{{ cmsRoute('khoa.create') }}">
-                  <button type="button" class="btn btn-cyan btn-sm">Thêm mới</button>
-                </a>
+                @if (isCmsAdmin())
+                  <a href="{{ cmsRoute('khoa.create') }}">
+                    <button type="button" class="btn btn-cyan btn-sm">Thêm mới</button>
+                  </a>
+                @endif
               </div>
 
               <div id="zero_config_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -29,6 +31,7 @@
                   <thead>
                   <tr>
                     <th scope="col">STT</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Tên khoa</th>
                     <th scope="col">Mã khoa</th>
                     <th scope="col">Link khảo sát</th>
@@ -42,6 +45,7 @@
                   @foreach($dataList as $key => $item)
                     <tr>
                       <td>{{ getSTTCms($dataList, $key) }}</td>
+                      <td>{{ $item->id }}</td>
                       <td>{{ $item->name }}</td>
                       <td>{{ $item->makhoa }}</td>
                       <td><a href="{{ clientRoute('home', ['makhoa' => $item->makhoa]) }}">Link</a></td>
@@ -53,19 +57,21 @@
                           <a href="{{ cmsRoute('khoa.edit', ['khoa' => $item->id]) }}">
                             <button type="button" class="btn btn-cyan btn-xs">Sửa</button>
                           </a>
-                          <a href="{{ cmsRoute('question.index', ['id' => $item->id]) }}">
+                          <a href="{{ cmsRoute('question.index', ['khoaid' => $item->id]) }}">
                             <button type="button" class="btn btn-primary btn-xs">Câu hỏi</button>
                           </a>
-                          <a href="{{ cmsRoute('gv.index', ['id' => $item->id]) }}">
+                          <a href="{{ cmsRoute('gv.index', ['khoaid' => $item->id]) }}">
                             <button type="button" class="btn btn-cyan btn-xs">GV</button>
                           </a>
-                          <a href="#modal_confirm_delete"
-                             class="btn-danger btn btn-xs modal_confirm_delete rounded"
-                             data-toggle="modal"
-                             data-form-action="{{ cmsRoute('khoa.destroy', ['khoa' => $item->id]) }}"
-                          >
-                            Xóa
-                          </a>
+                          @if (isCmsAdmin())
+                            <a href="#modal_confirm_delete"
+                               class="btn-danger btn btn-xs modal_confirm_delete rounded"
+                               data-toggle="modal"
+                               data-form-action="{{ cmsRoute('khoa.destroy', ['khoa' => $item->id]) }}"
+                            >
+                              Xóa
+                            </a>
+                          @endif
                         </div>
                       </td>
                     </tr>

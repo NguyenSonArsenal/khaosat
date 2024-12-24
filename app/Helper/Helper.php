@@ -520,3 +520,8 @@ function crawlPage($url, $depth = 5)
         'description' => !empty($description) ? $description : '',
     ];
 }
+
+function isCmsAdmin()
+{
+    return empty(cmsCurrentUser()->khoa_id);
+}

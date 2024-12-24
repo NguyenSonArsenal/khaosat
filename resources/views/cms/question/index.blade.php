@@ -24,7 +24,7 @@
                       <button type="button" class="btn btn-cyan btn-sm">Quay lại</button>
                     </a>
                   @endif
-                  <a href="{{route('cms.question.create', ['id' => $khoaId])}}">
+                  <a href="{{route('cms.question.create', ['khoaid' => $khoaId])}}">
                     <button type="button" class="btn btn-cyan btn-sm">Thêm mới</button>
                   </a>
                 </div>
@@ -53,7 +53,7 @@
                       </td>
                       <td>
                         <div class="comment-footer d-flex">
-                          <a href="{{ route('cms.question.edit', ['questionId' => $entity->id]) }}">
+                          <a href="{{ route('cms.question.edit', ['questionId' => $entity->id, 'khoaid' => $khoaId]) }}">
                             <button type="button" class="btn btn-cyan btn-xs">Sửa</button>
                           </a>
                           <form action="{{ route('cms.question.destroy', ['questionId' => $entity->id]) }}" method="post">

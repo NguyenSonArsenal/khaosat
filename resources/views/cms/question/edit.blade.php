@@ -23,7 +23,7 @@
             <div class="card-body">
               <div class="card-body__head d-flex">
                 <h5 class="card-title">Cập nhật</h5>
-                <a href="{{route('cms.question.index', ['id' => $data->khoa_id])}}">
+                <a href="{{route('cms.question.index', ['khoaid' => $data->khoa_id])}}">
                   <button type="button" class="btn btn-cyan btn-sm">Quay lại</button>
                 </a>
               </div>

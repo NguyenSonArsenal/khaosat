@@ -20,7 +20,7 @@
             <div class="card-body">
               <div class="card-body__head d-flex">
                 <h5 class="card-title">Thêm mới</h5>
-                <a href="{{route('cms.gv.index', ['id' => $khoaId])}}">
+                <a href="{{route('cms.gv.index', ['khoaid' => $khoaId])}}">
                   <button type="button" class="btn btn-cyan btn-sm">Quay lại</button>
                 </a>
               </div>

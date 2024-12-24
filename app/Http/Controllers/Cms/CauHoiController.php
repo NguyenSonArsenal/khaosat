@@ -65,7 +65,7 @@ class CauHoiController extends BaseCmsController
         }
     }
 
-    public function edit($questionId)
+    public function edit($khoaid, $questionId)
     {
         $entity = Question::with('surveyOptions')->where('id', $questionId)->first();
         if (empty($entity)) {
