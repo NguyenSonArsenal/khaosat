@@ -10,6 +10,7 @@ Route::group(['as' => 'auth.'], function () {
 
 Route::group(['middleware' => ['authCms']], function() {
     Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
+    Route::get('thong-ke', ['as' => 'thongke', 'uses' => 'ThongKeController@index']);
     Route::resource('khoa', 'KhoaController');
 //    Route::get('khoa/tao-cau-hoi/{slug}', 'KhoaController');
 

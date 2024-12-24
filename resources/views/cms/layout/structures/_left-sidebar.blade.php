@@ -18,6 +18,14 @@
           </a>
         </li>
 
+        <li class="sidebar-item {{ activeMenu('thongke') ? 'selected' : '' }}">
+          <a class="sidebar-link waves-effect waves-dark {{ activeMenu('thongke') ? 'active' : '' }}"
+             href="{{ cmsRoute('thongke') }}">
+            <i class="mdi mdi-view-dashboard"></i>
+            <span class="hide-menu">Thống kê</span>
+          </a>
+        </li>
+
         <li class="sidebar-item">
           <a class="sidebar-link waves-effect waves-dark" href="{{ cmsRoute('logout') }}">
             <i class="mdi mdi-view-dashboard"></i>
