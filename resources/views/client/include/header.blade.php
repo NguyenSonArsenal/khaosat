@@ -6,6 +6,7 @@
           <img src="{{ asset('cms/image/khao-sat.webp') }}" alt="" width="100px">
         </a>
       </div>
+      <div style="padding-right: 15px; color: white">Khảo sát</div>
 {{--      <ul class="menu">--}}
 {{--        <li class="{{ str_contains(request()->route()->getName(), 'home') ? 'active' : '' }}">--}}
 {{--          <a href="{{ clientRoute('home') }}">Trang chủ</a>--}}
@@ -26,10 +27,7 @@
         <a href="{{ clientRoute('home', ['makhoa' => request('makhoa')]) }}">
           <img src="{{ asset('cms/image/khao-sat.webp') }}" alt="" width="100px">
         </a>
-        <div class="toggle" id="toggle">
-          <i class="ri-menu-line i_line"></i>
-          <i class="ri-close-line i_close"></i>
-        </div>
+        <div style="padding-right: 15px; color: white">Khảo sát</div>
       </div>
 {{--      <ul class="menu">--}}
 {{--        <li class="{{ str_contains(request()->route()->getName(), 'home') ? 'active' : '' }}">--}}

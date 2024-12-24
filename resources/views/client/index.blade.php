@@ -2,6 +2,15 @@
 
 @push('style')
   <link rel="stylesheet" href="{{ asset('client/assets/css/index.css') }}">
+
+  <style>
+    @media (max-width: 768px) {
+      header .nav_sp .logo img {
+        width: 75px;
+      }
+    }
+  </style>
+
 @endpush
 
 @push('script')
