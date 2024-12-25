@@ -525,3 +525,13 @@ function isCmsAdmin()
 {
     return empty(cmsCurrentUser()->khoa_id);
 }
+
+function cmsNoPermission()
+{
+    return redirect()->route(cmsRouteName('no_permission'));
+}
+
+function cmsNotFound()
+{
+    return redirect()->route(cmsRouteName('not_found'));
+}

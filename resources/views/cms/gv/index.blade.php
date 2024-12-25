@@ -5,7 +5,7 @@
     <div class="page-breadcrumb">
       <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
-          <h4 class="page-title">Giáo viên</h4>
+          <h4 class="page-title">Danh sách giáo viên khoa <strong>{{ $khoa->name }}</strong></h4>
         </div>
       </div>
     </div>
@@ -35,6 +35,7 @@
                 <table class="table table-striped table-bordered dataTable" role="grid">
                   <thead>
                   <tr>
+                    <th scope="col">STT</th>
                     <th scope="col">Email</th>
                     <th scope="col">Thời gian tạo</th>
                     <th scope="col">Thời gian cập nhật</th>
@@ -44,15 +45,19 @@
                   <tbody>
                   @foreach($dataList as $key => $entity )
                     <tr>
+                      <td>{{ getSTTCms($dataList, $key) }}</td>
                       <td>{{ $entity->email }}</td>
                       <td>{{ date('d-m-Y H:i:s', strtotime($entity->created_at)) }}</td>
                       <td>{{ date('d-m-Y H:i:s', strtotime($entity->updated_at)) }}</td>
                       <td>
-                        @if (isCmsAdmin())
-                          <div class="comment-footer d-flex">
+                        <div class="comment-footer d-flex">
+                          @if ($entity->hasAllowEditGv())
                             <a href="{{ cmsRoute('gv.edit', ['gvId' => $entity->id, 'khoaid' => $khoaId]) }}">
                               <button type="button" class="btn btn-cyan btn-xs">Sửa</button>
                             </a>
+                          @endif
+
+                          @if (isCmsAdmin())
                             <form action="{{ cmsRoute('gv.destroy', ['gvId' => $entity->id]) }}" method="post">
                               @csrf
                               @method('DELETE')
@@ -62,8 +67,8 @@
                                 Xóa
                               </button>
                             </form>
-                          </div>
-                        @endif
+                          @endif
+                        </div>
                       </td>
                     </tr>
                   @endforeach

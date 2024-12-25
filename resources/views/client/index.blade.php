@@ -81,7 +81,9 @@
             </div>
           </div>
 
-          <button type="submit" class="submit btn-cyan">Submit</button>
+          @if (count($question) > 0)
+            <button type="submit" class="submit btn-cyan">Submit</button>
+          @endif
         </form>
       </div>
     </div>

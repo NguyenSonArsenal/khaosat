@@ -31,7 +31,7 @@ class KhoaController extends BaseCmsController
         if (empty(cmsCurrentUser()->khoa_id)) {
             return view('cms.khoa.create');
         }
-        abort(404);
+        return cmsNoPermission();
     }
 
     public function store(KhoaRequest $request)
@@ -47,11 +47,11 @@ class KhoaController extends BaseCmsController
     public function edit($id)
     {
         if (cmsCurrentUser()->khoa_id && cmsCurrentUser()->khoa_id != $id) {
-            abort(404);
+            return cmsNoPermission();
         }
         $entity = Khoa::where('id', $id)->first();
         if (empty($entity)) {
-            return backRouteError(cmsRouteName('khoa.index'), transMessage('not_found'));
+            return cmsNotFound();
         }
 
         $viewData = [

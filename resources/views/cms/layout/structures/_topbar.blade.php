@@ -22,11 +22,17 @@
           </a>
         </li>
       </ul>
+
+      @php
+        $khoa = \App\Models\Khoa::where('id', cmsCurrentUser()->khoa_id)->first();
+        $khoaName = empty($khoa) ? "" : "| " . $khoa->name;
+      @endphp
+
       <ul class="navbar-nav float-right">
         <li style="padding: 0px 15px; color: white;
     font-size: 0.875rem;
     line-height: 64px;
-    height: 64px;">{{ cmsCurrentUser()->email }}</li>
+    height: 64px;">{{ cmsCurrentUser()->email }} {{ $khoaName }}</li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href=""
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

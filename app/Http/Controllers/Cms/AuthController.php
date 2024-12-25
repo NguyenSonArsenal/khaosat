@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Cms\Base\BaseCmsController;
+use App\Models\Khoa;
 
 class AuthController extends BaseCmsController
 {
@@ -22,7 +23,10 @@ class AuthController extends BaseCmsController
         ]);
 
         if ($checkLogin) {
-            return redirect()->route(cmsRouteName('khoa.index'));
+            $khoa = Khoa::where('id', cmsCurrentUser()->khoa_id)->first();
+            if (!empty($khoa)) {
+                return redirect()->route(cmsRouteName('khoa.index'));
+            }
         }
 
 

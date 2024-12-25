@@ -12,4 +12,9 @@ class Admin extends Model
     protected $fillable = ['email', 'password', 'role', 'khoa_id'];
 
     use SoftDeletes;
+
+    public function hasAllowEditGv()
+    {
+        return isCmsAdmin() || cmsCurrentUserId() == $this->id;
+    }
 }

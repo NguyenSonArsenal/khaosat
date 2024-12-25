@@ -30,7 +30,7 @@
 
               <div id="zero_config_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="card">
-                  <form class="form-horizontal" action="{{route('cms.question.store', ['id' => $khoaId])}}"
+                  <form class="form-horizontal" action="{{route('cms.question.store', ['khoaid' => $khoaId])}}"
                         method="post" enctype="multipart/form-data">
                     @csrf
                     @include('cms.layout.structures._error_validate')

@@ -7,7 +7,7 @@
     <div class="page-breadcrumb">
       <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
-          <h4 class="page-title">Danh sách kết quả khảo sát</h4>
+          <h4 class="page-title">Danh sách kết quả khảo sát khoa: <strong>{{ $khoa->name }}</strong></h4>
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Cms\Base\BaseCmsController;
 use App\Http\Requests\Cms\GvRequest;
 use App\Http\Requests\Cms\QuestionRequest;
 use App\Models\Admin;
+use App\Models\Khoa;
 use App\Models\Question;
 use Illuminate\Support\Facades\Log;
 
@@ -15,9 +16,15 @@ class GvController extends BaseCmsController
     {
         $dataList = Admin::query()->where('khoa_id', $id)->orderBy('id', 'desc')->paginate(getCmsPagination());
 
+        $khoa = Khoa::where('id', $id)->first();
+        if (empty($khoa)) {
+            return redirect()->route(cmsRouteName('not_found'));
+        }
+
         $viewData = [
             'dataList' => $dataList,
-            'khoaId' => $id
+            'khoaId' => $id,
+            'khoa' => $khoa
         ];
 
         return view('cms.gv.index', $viewData);
@@ -25,8 +32,12 @@ class GvController extends BaseCmsController
 
     public function create($id)
     {
+        $khoa = Khoa::where('id', $id)->first();
+        if (empty($khoa)) {
+            return redirect()->route(cmsRouteName('not_found'));
+        }
         if (!isCmsAdmin()) {
-            abort(404);
+            return cmsNoPermission();
         }
         $viewData = [
             'khoaId' => $id
@@ -47,12 +58,16 @@ class GvController extends BaseCmsController
 
     public function edit($khoaId, $gvId)
     {
-        if (!isCmsAdmin()) {
-            abort(404);
+        if (!isCmsAdmin() && cmsCurrentUserId() != $gvId) {
+            return cmsNoPermission();
         }
         $entity = Admin::where('id', $gvId)->first();
         if (empty($entity)) {
-            abort(404);
+            return cmsNotFound();
+        }
+        $khoa = Khoa::where('id', $khoaId)->first();
+        if (empty($khoa)) {
+            return cmsNotFound();
         }
         $viewData = [
             'entity' => $entity,

@@ -11,14 +11,13 @@ class ThongKeController extends BaseCmsController
 {
     public function index()
     {
-        $dataList = User::query()->with(['khoa'])->select('*', DB::raw('count(khoa_id) as count'))
+        $dataList = User::query()->whereHas('khoa')->with(['khoa'])->select('*', DB::raw('count(khoa_id) as count'))
             ->groupBy('khoa_id')->orderBy('count', 'desc')->get();
-
-
 
         $khoa = [];
         $khoaIdTmp = [];
         $count = [];
+
         foreach ($dataList as $item) {
             $khoa[] = $item->khoa->makhoa;
             $khoaIdTmp[] = $item->khoa->id;

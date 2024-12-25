@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Cms\Base\BaseCmsController;
 use App\Http\Requests\Cms\QuestionRequest;
-use App\Models\History;
 use App\Models\Khoa;
 use App\Models\Question;
 use App\Models\Survey;
@@ -19,9 +18,19 @@ class CauHoiController extends BaseCmsController
     {
         $dataList = Question::query()->with(['khoa', 'surveyOptions'])->where('khoa_id', $id)->orderBy('id', 'desc')->paginate(getCmsPagination());
 
+        $khoa = Khoa::where('id', $id)->first();
+        if (empty($khoa)) {
+            return redirect()->route(cmsRouteName('not_found'));
+        }
+
+        if (!isCmsAdmin() && cmsCurrentUser()->khoa_id != $id) {
+            return cmsNoPermission();
+        }
+
         $viewData = [
             'dataList' => $dataList,
-            'khoaId' => $id
+            'khoaId' => $id,
+            'khoa' => $khoa,
         ];
 
         return view('cms.question.index', $viewData);
@@ -29,6 +38,10 @@ class CauHoiController extends BaseCmsController
 
     public function create($id)
     {
+        if (!isCmsAdmin() && cmsCurrentUser()->khoa_id != $id) {
+            return cmsNoPermission();
+        }
+
         $viewData = [
             'khoaId' => $id
         ];
@@ -57,7 +70,7 @@ class CauHoiController extends BaseCmsController
             }
 
             DB::commit();
-            return backRouteSuccess('cms.question.index', transMessage('create_success'), ['id' => $khoaId]);
+            return backRouteSuccess('cms.question.index', transMessage('create_success'), ['khoaid' => $khoaId]);
         } catch (\Exception $e) {
             Log::error($e);
             DB::rollBack();
@@ -65,12 +78,20 @@ class CauHoiController extends BaseCmsController
         }
     }
 
-    public function edit($khoaid, $questionId)
+    public function edit($khoaId, $questionId)
     {
         $entity = Question::with('surveyOptions')->where('id', $questionId)->first();
         if (empty($entity)) {
-            return backRouteSuccess(cmsRouteName('question.index'), t('not_found'), ['id' => $entity->khoa_id]);
+            return cmsNotFound();
         }
+        if ($entity->khoa_id != $khoaId) {
+            return cmsNotFound();
+        }
+
+        if (!isCmsAdmin() && cmsCurrentUser()->khoa_id != $khoaId) {
+            return cmsNoPermission();
+        }
+
         $da = explode(",", $entity->da);
 
         $viewData = [
@@ -112,7 +133,7 @@ class CauHoiController extends BaseCmsController
             $entity->save();
 
             DB::commit();
-            return backRouteSuccess(cmsRouteName('question.index'), t('update_success'), ['id' => $entity->khoa_id]);
+            return backRouteSuccess(cmsRouteName('question.index'), t('update_success'), ['khoaid' => $entity->khoa_id]);
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error($e);
@@ -141,7 +162,11 @@ class CauHoiController extends BaseCmsController
         try {
             $khoa = Khoa::where('makhoa', $maKhoa)->first();
             if (empty($khoa)) {
-                abort(404); // @todo
+                return cmsNotFound();
+            }
+
+            if (!isCmsAdmin() && cmsCurrentUser()->khoa_id != $khoa->id) {
+                return cmsNoPermission();
             }
 
             $dataList = User::where('khoa_id', $khoa->id)->paginate(getCmsPagination());
@@ -150,6 +175,7 @@ class CauHoiController extends BaseCmsController
                 'dataList' => $dataList,
                 'makhoa' => $maKhoa,
                 'khoaId' => $khoa->id,
+                'khoa' => $khoa,
             ];
 
             return view('cms.result.index', $viewData);
@@ -164,11 +190,17 @@ class CauHoiController extends BaseCmsController
         try {
             $khoa = Khoa::where('makhoa', $maKhoa)->first();
             if (empty($khoa)) {
-                abort(404); // @todo
+                return cmsNotFound();
+            }
+
+            if (!isCmsAdmin() && cmsCurrentUser()->khoa_id != $khoa->id) {
+                return cmsNoPermission();
             }
 
             $survey = Survey::where('user_id', $userId)->pluck('survey_options_id')->toArray();
-            $question = Question::query()->with('surveyOptions')->orderBy('id', 'desc')->where('khoa_id', $khoa->id)->get();
+            $question = Question::query()->withTrashed()->with(['surveyOptions' => function ($query) {
+                $query->withTrashed();
+            }])->orderBy('id', 'desc')->where('khoa_id', $khoa->id)->get();
 
             $viewData = [
                 'survey' => $survey,
